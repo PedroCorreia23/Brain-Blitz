@@ -7,9 +7,6 @@
 - [Installation](#installation)
 - [How to Play](#how-to-play)
 - [Game Rules](#game-rules)
-- [Future Improvements](#future-improvements)
-- [Contributing](#contributing)
-- [License](#license)
 - [Acknowledgements](#acknowledgements)
 
 ---

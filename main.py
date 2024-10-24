@@ -1,5 +1,6 @@
 from gameRules import rules
 from questions import *
+import time
 
 def main():
     print("****WELCOME TO BRAIN BLITZ****")
@@ -22,6 +23,17 @@ def ready():
 
     while user_input != "":  
         user_input = input() 
+
+def timer():
+    i = 30
+    while i > 0: 
+
+        timer = '{:02d}'.format(i) 
+        print(timer, end="\r") 
+        time.sleep(1) 
+        i -= 1
+      
+    print('Times up! Unfortunately, that counts as a wrong answer.') 
 
 def game():
 
@@ -46,7 +58,7 @@ def game():
             print("Choices:")
             for idx, choice in enumerate(question['choices'], 1):
                 print(f"{idx}. {choice}")
-
+            timer()
             while True:
                          
                 answer = input("Lock in your answer: ").upper()
@@ -60,6 +72,7 @@ def game():
             else:
                 print(f"Congratulations! You got it right! The correct answer is {question['correct_answer']}.\n")
             n_question += 1            
-        
+
+
 
 main()

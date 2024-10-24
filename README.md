@@ -28,7 +28,7 @@
 1. Clone this repository to your local machine:
 
     ```bash
-    git clone https://github.com/yourusername/brain-blitz.git
+    git clone https://github.com/PedroCorreia23/brain-blitz.git
     ```
 
 2. Navigate to the project directory:

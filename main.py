@@ -1,18 +1,20 @@
 from gameRules import rules
 
 def main():
-
     print("****WELCOME TO BRAIN BLITZ****")
-    user_input = input("Is this your first time playing?(y/n): ")
-    if user_input == "y":
-        print(rules())
-    else:
-        game()
+    while True:
+        user_input = input("Is this your first time playing? (y/n): ").lower()
+        if user_input == "y":
+            print(rules())
+            game()  # Automatically start the game after displaying the rules
+            break
+        elif user_input == "n":
+            game()  # Skip the rules and start the game
+            break
+        else:
+            print("Invalid input. Please enter 'y' for yes or 'n' for no.")
 
 def game():
-
-    hints = 7
-    prize = 0
-    
+    print("Starting the game...")
 
 main()

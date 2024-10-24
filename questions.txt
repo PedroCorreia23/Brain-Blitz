@@ -1,0 +1,47 @@
+[Easy]
+What is the capital city of France?|A) Berlin|B) Madrid|C) Paris|D) Rome|C
+What is 5 + 3?|A) 6|B) 7|C) 8|D) 9|C
+What color is the sky on a clear day?|A) Blue|B) Green|C) Yellow|D) Red|A
+How many days are there in a leap year?|A) 365|B) 366|C) 364|D) 367|B
+Which animal is known as man's best friend?|A) Cat|B) Dog|C) Fish|D) Parrot|B
+How many sides does a triangle have?|A) 2|B) 3|C) 4|D) 5|B
+What is the primary color of a banana?|A) Blue|B) Green|C) Yellow|D) Red|C
+What is the capital of Spain?|A) Lisbon|B) Madrid|C) Barcelona|D) Rome|B
+What planet do we live on?|A) Mars|B) Earth|C) Jupiter|D) Venus|B
+How many wheels does a bicycle have?|A) 1|B) 2|C) 3|D) 4|B
+
+[Medium]
+Who wrote 'To Kill a Mockingbird'?|A) Harper Lee|B) J.K. Rowling|C) Mark Twain|D) Jane Austen|A
+Which planet is closest to the Sun?|A) Venus|B) Earth|C) Mercury|D) Mars|C
+What is the square root of 64?|A) 6|B) 7|C) 8|D) 9|C
+Which element has the chemical symbol 'O'?|A) Oxygen|B) Hydrogen|C) Gold|D) Iron|A
+In which year did World War I begin?|A) 1910|B) 1914|C) 1918|D) 1920|B
+Who painted the Mona Lisa?|A) Vincent van Gogh|B) Pablo Picasso|C) Leonardo da Vinci|D) Claude Monet|C
+Which country is home to the Great Barrier Reef?|A) USA|B) Australia|C) Japan|D) South Africa|B
+What is the hardest natural substance on Earth?|A) Diamond|B) Gold|C) Iron|D) Titanium|A
+Which famous scientist developed the theory of general relativity?|A) Isaac Newton|B) Nikola Tesla|C) Albert Einstein|D) Galileo Galilei|C
+What is the name of the longest river in Africa?|A) Amazon|B) Nile|C) Yangtze|D) Mississippi|B
+
+[Hard]
+In what year did the Titanic sink?|A) 1905|B) 1912|C) 1914|D) 1918|B
+What is the capital of Australia?|A) Sydney|B) Melbourne|C) Canberra|D) Perth|C
+What is the chemical symbol for gold?|A) Au|B) Ag|C) Fe|D) Hg|A
+Who discovered penicillin?|A) Louis Pasteur|B) Alexander Fleming|C) Marie Curie|D) Albert Einstein|B
+What is the longest bone in the human body?|A) Tibia|B) Humerus|C) Radius|D) Femur|D
+Who wrote the play 'Hamlet'?|A) William Shakespeare|B) George Orwell|C) J.R.R. Tolkien|D) Charles Dickens|A
+Which planet is known as the "Red Planet"?|A) Venus|B) Earth|C) Mars|D) Jupiter|C
+What is the tallest mountain in the world?|A) Mount Everest|B) K2|C) Kangchenjunga|D) Lhotse|A
+What is the main ingredient in traditional sushi?|A) Rice|B) Bread|C) Pasta|D) Potatoes|A
+In which year did the Berlin Wall fall?|A) 1979|B) 1985|C) 1989|D) 1991|C
+
+[Super Hard]
+Who developed the theory of general relativity?|A) Isaac Newton|B) Nikola Tesla|C) Albert Einstein|D) Galileo Galilei|C
+What is the longest river in the world?|A) Amazon|B) Nile|C) Yangtze|D) Mississippi|B
+What year was the first human moon landing?|A) 1967|B) 1968|C) 1969|D) 1970|C
+Which scientist developed the theory of evolution by natural selection?|A) Charles Darwin|B) Gregor Mendel|C) Marie Curie|D) Isaac Newton|A
+Who was the first woman to win a Nobel Prize?|A) Marie Curie|B) Rosalind Franklin|C) Ada Lovelace|D) Florence Nightingale|A
+What is the most abundant gas in Earth's atmosphere?|A) Oxygen|B) Carbon Dioxide|C) Nitrogen|D) Hydrogen|C
+Which country has the largest population?|A) India|B) USA|C) China|D) Russia|C
+In which year was the United Nations established?|A) 1940|B) 1945|C) 1950|D) 1960|B
+What is the smallest country in the world by land area?|A) Vatican City|B) Monaco|C) Nauru|D) Malta|A
+Who composed the opera 'The Magic Flute'?|A) Ludwig van Beethoven|B) Wolfgang Amadeus Mozart|C) Johann Sebastian Bach|D) Richard Wagner|B

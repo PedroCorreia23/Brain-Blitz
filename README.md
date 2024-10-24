@@ -85,10 +85,6 @@ Contributions are welcome! To contribute:
 4. Push to the branch (`git push origin feature-branch`).
 5. Open a Pull Request.
 
-## License
-
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
-
 ## Acknowledgements
 
 **Brain Blitz** is inspired by the Portuguese game show *Joker*, aired on RTP1. While Brain Blitz is an original creation, it borrows key elements from *Joker*, such as the use of lifelines (here referred to as "Hints") and the structure of a progressive prize ladder. Special thanks to the creators of *Joker* for the inspiration!

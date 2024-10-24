@@ -70,21 +70,6 @@
 - Use your Hints wisely to eliminate incorrect answers and get closer to the prize.
 - Answer all 15 questions to win the maximum prize of €75,000.
 
-## Future Improvements
-
-- **Leaderboard**: Add a system to track high scores.
-- **Question Categories**: Allow players to choose categories of questions (e.g., Science, History).
-- **Multiplayer Mode**: Implement a feature where players can compete against each other.
-
-## Contributing
-
-Contributions are welcome! To contribute:
-1. Fork the repository.
-2. Create a new branch for your feature (`git checkout -b feature-branch`).
-3. Commit your changes (`git commit -m "Add some feature"`).
-4. Push to the branch (`git push origin feature-branch`).
-5. Open a Pull Request.
-
 ## Acknowledgements
 
 **Brain Blitz** is inspired by the Portuguese game show *Joker*, aired on RTP1. While Brain Blitz is an original creation, it borrows key elements from *Joker*, such as the use of lifelines (here referred to as "Hints") and the structure of a progressive prize ladder. Special thanks to the creators of *Joker* for the inspiration!

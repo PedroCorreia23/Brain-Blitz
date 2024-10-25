@@ -29,19 +29,17 @@ def ready():
 
 def timer(stop_event):
     i = 30
-    while i > 0 and not stop_event.is_set(): 
-
-        sys.stdout.write(f"\rTime left: {i} seconds")
+    while i > 0 and not stop_event.is_set():
+        sys.stdout.write(f"\rTime left: {i} seconds  Lock in your answer: ")
         sys.stdout.flush()
-        time.sleep(1) 
+        time.sleep(1)
         i -= 1
 
-    if not stop_event.is_set():  # If the stop event was not set before time runs out  
+    if not stop_event.is_set():  # If the stop event was not set before time runs out
         sys.stdout.write("\nTimes up! Unfortunately, that counts as a wrong answer.\n")
-        sys.stdout.flush() 
+        sys.stdout.flush()
 
 def game():
-
     n_question = 0
     questions = load_questions()
     difficulty = ["easy", "medium", "hard", "super hard"]
@@ -71,26 +69,22 @@ def game():
             # Start the timer in a separate thread
             timer_thread = threading.Thread(target=timer, args=(stop_event,))
             timer_thread.start()
-
+            
             answer = None
             while True:
                 if stop_event.is_set():
                     # Timer has expired, break out of input loop
                     break
 
-                # Clear the current line to avoid overlap
-                sys.stdout.write("Lock in your answer: ")
-                sys.stdout.flush()
-                         
                 answer = input().upper()
                 
                 if answer in ['A', 'B', 'C', 'D']:
-                    stop_event.set() # Stop the timer if a valid answer is provided 
+                    stop_event.set()  # Stop the timer if a valid answer is provided
                     break
                 else:
                     print("Invalid input! Please enter A, B, C, or D.")
 
-                # Wait for the timer thread to finish
+            # Wait for the timer thread to finish
             timer_thread.join()
 
             if answer != question['correct_answer']:
@@ -98,7 +92,5 @@ def game():
             else:
                 print(f"Congratulations! You got it right! The correct answer is {question['correct_answer']}.\n")
             n_question += 1            
-
-
 
 main()

@@ -40,6 +40,8 @@ def timer(stop_event):
         sys.stdout.flush()
 
 def game():
+
+    hints = 7
     n_question = 0
     questions = load_questions()
     difficulty = ["easy", "medium", "hard", "super hard"]
@@ -89,9 +91,14 @@ def game():
 
             if answer != question['correct_answer']:
                 print(f"That's incorrect!\nThe correct answer was {question['correct_answer']}. Better luck next time!\n")
+                hints -= 3
+                print(f"Numero: {hints}")
+                
             else:
                 print(f"Congratulations! You got it right! The correct answer is {question['correct_answer']}.\n")
+                print(f"Numero: {hints}")
+
             n_question += 1       
-                 
+
 
 main()

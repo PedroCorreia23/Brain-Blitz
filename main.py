@@ -1,6 +1,9 @@
+import threading
+import time
+import sys
+
 from gameRules import rules
 from questions import *
-import time
 
 def main():
     print("****WELCOME TO BRAIN BLITZ****")
@@ -24,16 +27,18 @@ def ready():
     while user_input != "":  
         user_input = input() 
 
-def timer():
+def timer(stop_event):
     i = 30
-    while i > 0: 
+    while i > 0 and not stop_event.is_set(): 
 
-        timer = '{:02d}'.format(i) 
-        print(timer, end="\r") 
+        sys.stdout.write(f"\rTime left: {i} seconds")
+        sys.stdout.flush()
         time.sleep(1) 
         i -= 1
-      
-    print('Times up! Unfortunately, that counts as a wrong answer.') 
+
+    if not stop_event.is_set():  # If the stop event was not set before time runs out  
+        sys.stdout.write("\nTimes up! Unfortunately, that counts as a wrong answer.\n")
+        sys.stdout.flush() 
 
 def game():
 
@@ -53,19 +58,40 @@ def game():
             question = get_random_question(questions, difficulty[2])  
         else:
             question = get_random_question(questions, difficulty[3])
+
         if question:
             print(question['question'])
             print("Choices:")
             for idx, choice in enumerate(question['choices'], 1):
                 print(f"{idx}. {choice}")
-            timer()
+
+            # Event to signal the timer to stop
+            stop_event = threading.Event()
+
+            # Start the timer in a separate thread
+            timer_thread = threading.Thread(target=timer, args=(stop_event,))
+            timer_thread.start()
+
+            answer = None
             while True:
-                         
-                answer = input("Lock in your answer: ").upper()
-                if answer not in ['A', 'B', 'C', 'D']:
-                    print("Invalid input! Please enter A, B, C, or D.")
-                else:
+                if stop_event.is_set():
+                    # Timer has expired, break out of input loop
                     break
+
+                # Clear the current line to avoid overlap
+                sys.stdout.write("Lock in your answer: ")
+                sys.stdout.flush()
+                         
+                answer = input().upper()
+                
+                if answer in ['A', 'B', 'C', 'D']:
+                    stop_event.set() # Stop the timer if a valid answer is provided 
+                    break
+                else:
+                    print("Invalid input! Please enter A, B, C, or D.")
+
+                # Wait for the timer thread to finish
+            timer_thread.join()
 
             if answer != question['correct_answer']:
                 print(f"That's incorrect!\nThe correct answer was {question['correct_answer']}. Better luck next time!\n")

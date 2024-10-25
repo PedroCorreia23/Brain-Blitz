@@ -91,6 +91,7 @@ def game():
                 print(f"That's incorrect!\nThe correct answer was {question['correct_answer']}. Better luck next time!\n")
             else:
                 print(f"Congratulations! You got it right! The correct answer is {question['correct_answer']}.\n")
-            n_question += 1            
+            n_question += 1       
+                 
 
 main()

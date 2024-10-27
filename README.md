@@ -16,7 +16,7 @@
 - **Multiple-choice questions**: Answer a set of questions, each with four options.
 - **Hint System**: Use "Hints" to eliminate wrong answers and improve your chances of winning.
 - **Bonus Rounds**: Earn additional Hints with bonus rounds.
-- **Dynamic Prize Ladder**: Progress through prize levels by answering correctly, with a maximum prize of €75,000.
+- **Dynamic Prize Ladder**: Progress through prize levels by answering correctly, with a maximum prize of €50,000.
 - **Fast-Paced Gameplay**: Timed rounds create urgency and excitement.
 
 ## Installation
@@ -64,7 +64,7 @@
 - For each correct answer, you progress up the prize ladder.
 - For each wrong answer, you lose 3 Hints. If you're out of Hints, you fall down the prize ladder.
 - Use your Hints wisely to eliminate incorrect answers and get closer to the prize.
-- Answer all 15 questions to win the maximum prize of €75,000.
+- Answer all 12 questions to win the maximum prize of €50,000.
 
 ## Acknowledgements
 

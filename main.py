@@ -45,11 +45,17 @@ def game():
     level = 0
     money_levels = ["0€", "200€", "500€", "1000€", "3000€", "10000€", "50000€"]
     n_question = 0
-    questions = load_questions()  # Assuming load_questions() loads questions correctly
+    questions = load_questions()  
     difficulty = ["easy", "medium", "hard", "super hard"]
     print("Starting the game...\n")
 
     while n_question < 12:
+
+        if n_question == 1:
+            bonus_round(1)
+        elif n_question == 3:
+            bonus_round(2)
+
         question_num(n_question)
         # Choose difficulty based on question number
         if level <= 2:
@@ -115,6 +121,32 @@ def game():
             
             n_question += 1
 
+def bonus_round(n_bonus_round):
+
+    bonus_questions = load_bonus_questions()
+
+    if n_bonus_round == 1:
+        print("*" * 25 , "\n****FIRST BONUS ROUND****", "\n" + "*" * 25)
+        print("!!!ATTENTION!!!\nWriting the answer with orthographic errors will count as a wrong answer!!!")
+
+        ready()
+        hints_gained, correct_answers = print_bonus_questions(bonus_questions, n_bonus_round)
+        
+        if hints_gained > 0:
+            print(f"Congratulations you got {correct_answers} correct answers, so you won {hints_gained} more hints.")
+        else:
+            print(f"Sorry, you got {correct_answers} correct answers, so you won {hints_gained} hints. Better Luck in the next bonus round. ")
+    else:
+        print("*" * 26 , "\n****SECOND BONUS ROUND****", "\n" + "*" * 26)
+        print("!!!ATTENTION!!!\nWriting the answer with orthographic errors will count as a wrong answer!!!")
+        
+        ready()
+        hints_gained, correct_answers = print_bonus_questions(bonus_questions, n_bonus_round)
+
+        if hints_gained > 0:
+            print(f"Congratulations you got {correct_answers} correct answers, so you won {hints_gained} more hints.")
+        else:
+            print(f"Sorry, you got {correct_answers} correct answers, so you won {hints_gained} hints this round.\n Now lets get ready for the last questions of the game. ")
 
 
 main()

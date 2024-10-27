@@ -16,7 +16,6 @@
 - **Multiple-choice questions**: Answer a set of questions, each with four options.
 - **Hint System**: Use "Hints" to eliminate wrong answers and improve your chances of winning.
 - **Bonus Rounds**: Earn additional Hints with bonus rounds.
-- **Super Hint**: Get help from a companion in tough situations.
 - **Dynamic Prize Ladder**: Progress through prize levels by answering correctly, with a maximum prize of €75,000.
 - **Fast-Paced Gameplay**: Timed rounds create urgency and excitement.
 

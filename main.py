@@ -114,6 +114,10 @@ def game():
                         level -= 2
                     elif hints == 0:
                         level -= 3
+                    
+                    if level < 0:
+                        level = 0
+                    
                     print(f"That's incorrect!\nThe correct answer was {question['correct_answer']}. Better luck next time!\n")
                     print(f"Numero de Hints: {hints}\nMoney Level: {money_levels[level]}")
             else:

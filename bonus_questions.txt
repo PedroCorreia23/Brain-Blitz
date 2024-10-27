@@ -1,23 +1,23 @@
 [1]
-What is the largest planet in our Solar System?|A) Jupiter|B) Saturn|Jupiter
-Which element has the chemical symbol 'O'?|A) Oxygen|B) Osmium|Oxygen
-Who painted the Mona Lisa?|A) Vincent van Gogh|B) Leonardo da Vinci|Leonardo da Vinci
-Which country is known as the Land of the Rising Sun?|A) China|B) Japan|Japan
-What is the capital of Canada?|A) Ottawa|B) Toronto|Ottawa
-What is the smallest planet in our Solar System?|A) Mercury|B) Mars|Mercury
-Who discovered penicillin?|A) Alexander Fleming|B) Marie Curie|Alexander Fleming
-What is the boiling point of water in Celsius?|A) 100|B) 212|100
-Who wrote "Pride and Prejudice"?|A) Jane Austen|B) Emily Brontë|Jane Austen
-What is the main gas in Earth's atmosphere?|A) Oxygen|B) Nitrogen|Nitrogen
+What is the largest planet in our Solar System?|A) Jupiter|B) Saturn|A
+Which element has the chemical symbol 'O'?|A) Oxygen|B) Osmium|A
+Who painted the Mona Lisa?|A) Vincent van Gogh|B) Leonardo da Vinci|B
+Which country is known as the Land of the Rising Sun?|A) China|B) Japan|B
+What is the capital of Canada?|A) Ottawa|B) Toronto|A
+What is the smallest planet in our Solar System?|A) Mercury|B) Mars|A
+Who discovered penicillin?|A) Alexander Fleming|B) Marie Curie|A
+What is the boiling point of water in Celsius?|A) 100|B) 212|A
+Who wrote "Pride and Prejudice"?|A) Jane Austen|B) Emily Brontë|A
+What is the main gas in Earth's atmosphere?|A) Oxygen|B) Nitrogen|B
 
-[2] 
-Which ocean is the largest by surface area?|A) Atlantic Ocean|B) Pacific Ocean|Pacific Ocean
-Which planet is closest to the Sun?|A) Mercury|B) Venus|Mercury
-In which year did the Titanic sink?|A) 1912|B) 1921|1912
-Which language is primarily spoken in Brazil?|A) Portuguese|B) Spanish|Portuguese
-What is the currency of Japan?|A) Yen|B) Won|Yen
-Which is the longest river in the world?|A) Nile|B) Amazon|Amazon
-What is the largest continent?|A) Asia|B) Africa|Asia
-In which year did World War II end?|A) 1945|B) 1939|1945
-What type of animal is the Komodo dragon?|A) Reptile|B) Mammal|Reptile
-Which Italian city is famous for its canals?|A) Venice|B) Rome|Venice
+[2]
+Which ocean is the largest by surface area?|A) Atlantic Ocean|B) Pacific Ocean|B
+Which planet is closest to the Sun?|A) Mercury|B) Venus|A
+In which year did the Titanic sink?|A) 1912|B) 1921|A
+Which language is primarily spoken in Brazil?|A) Portuguese|B) Spanish|A
+What is the currency of Japan?|A) Yen|B) Won|A
+Which is the longest river in the world?|A) Nile|B) Amazon|B
+What is the largest continent?|A) Asia|B) Africa|A
+In which year did World War II end?|A) 1945|B) 1939|A
+What type of animal is the Komodo dragon?|A) Reptile|B) Mammal|A
+Which Italian city is famous for its canals?|A) Venice|B) Rome|A

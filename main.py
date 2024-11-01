@@ -1,9 +1,8 @@
 import threading
-import time
-import sys
 
 from gameRules import rules
 from questions import *
+from timer_module import *
 
 def main():
     print("****WELCOME TO BRAIN BLITZ****")
@@ -26,19 +25,6 @@ def ready():
 
     while user_input != "":  
         user_input = input() 
-
-def timer(stop_event):
-    i = 30
-    while i > 0 and not stop_event.is_set():
-        sys.stdout.write(f"\rTime left: {i} seconds  Lock in your answer: ")
-        sys.stdout.flush()
-        time.sleep(1)
-        i -= 1
-
-    if not stop_event.is_set():  # If the stop event was not set before time runs out
-        sys.stdout.write("\nTimes up! Unfortunately, that counts as a wrong answer.\n")
-        sys.stdout.flush()
-        stop_event.set()    # Signal that time has expired
 
 def game():
     hints = 7
@@ -81,7 +67,7 @@ def game():
             # Event to signal the timer to stop
             stop_event = threading.Event()
             # Start the timer in a separate thread
-            timer_thread = threading.Thread(target=timer, args=(stop_event,))
+            timer_thread = threading.Thread(target=timer, args=(stop_event, False))
             timer_thread.start()
             
             answer = None
@@ -132,7 +118,6 @@ def game():
 
 def bonus_round(n_bonus_round):
     bonus_questions = load_bonus_questions()
-    #hints_gained, correct_answers = print_bonus_questions(bonus_questions, n_bonus_round)
 
     if n_bonus_round == 1:
         print("*" * 25, "\n****FIRST BONUS ROUND****", "\n" + "*" * 25)

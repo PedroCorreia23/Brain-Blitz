@@ -1,4 +1,7 @@
 import random
+import threading
+
+from timer_module import *
 
 def load_bonus_questions():
     with open('bonus_questions.txt', 'r', encoding='utf-8') as file:
@@ -85,7 +88,7 @@ def question_num(n_question):
 bonus_questions = load_bonus_questions()
 def print_bonus_questions(bonus_questions, round_number):
     count = 0
-    hints_gained = 0  # Default to 0 hints gained
+    hints_gained = 0
     correct_answers = 0
 
     # Filter questions for the specified bonus round
@@ -100,22 +103,32 @@ def print_bonus_questions(bonus_questions, round_number):
         for choice in item['choices']:
             print(choice)
 
-        answer = input("Write your answer: ").upper()
+        # Event to signal the timer to stop
+        stop_event = threading.Event()
+        # Start the timer in a separate thread
+        timer_thread = threading.Thread(target=timer, args=(stop_event, True))
+        timer_thread.start()
+
+        # Wait for user input or until timer expires
+        answer = input("").upper()
+        stop_event.set()  # Stop the timer once the answer is received
+        timer_thread.join()  # Ensure the timer thread stops
+
         if answer == item['correct_answer']:
             print("Correct Answer!")
             correct_answers += 1
         else:
             print("Wrong Answer!")
+        
         count += 1
 
-    # Set hints_gained based on correct answers; adjust conditions if needed
+    # Set hints_gained based on correct answers
     if correct_answers >= 5 and correct_answers < 10:
         hints_gained = 1
     elif correct_answers == 10:
         hints_gained = 2
 
-    return hints_gained, correct_answers  # Ensure both values are returned
-
+    return hints_gained, correct_answers
         
     
 

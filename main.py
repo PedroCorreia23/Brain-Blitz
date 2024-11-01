@@ -92,28 +92,18 @@ def game():
                 if answer == question['correct_answer']:
                     level = min(level + 1, len(money_levels) - 1)
                     print(f"Congratulations! You got it right! The correct answer is {question['correct_answer']}.\n")
-                    print(f"Numero de Hints: {hints}\nMoney Level: {money_levels[level]}\n")
+                    #print(f"Numero de Hints: {hints}\nMoney Level: {money_levels[level]}\n")
                 else:
                     # Handle penalties based on hints
-                    if hints >= 3:
-                        hints -= 3
-                    elif hints == 2:
-                        hints -= 2
-                        level -= 1
-                    elif hints == 1:
-                        hints -= 1
-                        level -= 2
-                    elif hints == 0:
-                        level -= 3
-                    
-                    if level < 0:
-                        level = 0
+                    hints, level = apply_penalty(hints, level)
                     
                     print(f"That's incorrect!\nThe correct answer was {question['correct_answer']}. Better luck next time!\n")
-                    print(f"Numero de Hints: {hints}\nMoney Level: {money_levels[level]}")
+                    #print(f"Numero de Hints: {hints}\nMoney Level: {money_levels[level]}")
             else:
                 print("Moving on to the next question\n")
-            
+                hints, level = apply_penalty(hints, level)
+
+            print(f"Numero de Hints: {hints}\nMoney Level: {money_levels[level]}\n")
             n_question += 1
 
 def bonus_round(n_bonus_round):
@@ -144,5 +134,23 @@ def bonus_round(n_bonus_round):
 
     # Return hints gained and correct answers to be used in the game function
     return hints_gained
+
+def apply_penalty(hints, level):
+    if hints >= 3:
+        hints -= 3
+    elif hints == 2:
+        hints -= 2
+        level -= 1
+    elif hints == 1:
+        hints -= 1
+        level -= 2
+    elif hints == 0:
+        level -= 3
+
+    if level < 0:
+        level = 0
+                    
+    
+    return hints, level
 
 main()

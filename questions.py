@@ -80,7 +80,7 @@ def get_random_question(questions, difficulty):
     return None
 
 def question_num(n_question):
-    positions = ["1st", "2nd", "3rd", "4th", "5th", "6th", "7th", "8th", "9th", "10th", "11th", "Last"]
+    positions = ["1st", "2nd", "3rd", "4th", "5th", "6th", "7th", "8th", "9th", "10th", "11th", "12th and Last"]
 
     if n_question < len(positions):
         print(positions[n_question] + " question")

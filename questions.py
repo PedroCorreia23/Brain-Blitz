@@ -94,6 +94,10 @@ def print_bonus_questions(bonus_questions, round_number):
     # Filter questions for the specified bonus round
     filtered_questions = [item for item in bonus_questions if item['round'] == f"[{round_number}]"]
 
+    stop_event = threading.Event()
+    timer_thread = threading.Thread(target=timer, args=(stop_event, True))
+    timer_thread.start()
+
     for item in filtered_questions:
         if count >= 10:  # Stop after 10 questions
             break
@@ -103,16 +107,8 @@ def print_bonus_questions(bonus_questions, round_number):
         for choice in item['choices']:
             print(choice)
 
-        # Event to signal the timer to stop
-        stop_event = threading.Event()
-        # Start the timer in a separate thread
-        timer_thread = threading.Thread(target=timer, args=(stop_event, True))
-        timer_thread.start()
-
         # Wait for user input or until timer expires
         answer = input("").upper()
-        stop_event.set()  # Stop the timer once the answer is received
-        timer_thread.join()  # Ensure the timer thread stops
 
         if answer == item['correct_answer']:
             print("Correct Answer!")
@@ -122,6 +118,9 @@ def print_bonus_questions(bonus_questions, round_number):
         
         count += 1
 
+    stop_event.set()  # Stop the timer once the answer is received
+    timer_thread.join()  # Ensure the timer thread stops
+
     # Set hints_gained based on correct answers
     if correct_answers >= 5 and correct_answers < 10:
         hints_gained = 1
@@ -129,9 +128,3 @@ def print_bonus_questions(bonus_questions, round_number):
         hints_gained = 2
 
     return hints_gained, correct_answers
-        
-    
-
-
-
-

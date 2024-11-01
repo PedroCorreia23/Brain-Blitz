@@ -102,7 +102,7 @@ def print_bonus_questions(bonus_questions, round_number):
         for choice in item['choices']:
             print(choice)
 
-        answer = input("Write your answer: ")
+        answer = input("Write your answer: ").upper()
         if answer == item['correct_answer']:
             print("Correct Answer!")
             correct_answers += 1

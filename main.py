@@ -52,11 +52,16 @@ def game():
     while n_question < 12:
 
         if n_question == 1:
-            bonus_round(1)
+            hints_gained= bonus_round(1)
+            hints += hints_gained
+            print(f"You have now {hints} hints.\n")
         elif n_question == 3:
-            bonus_round(2)
+            hints_gained= bonus_round(2)  
+            hints += hints_gained
+            print(f"You have now {hints} hints.\n")
 
         question_num(n_question)
+
         # Choose difficulty based on question number
         if level <= 2:
             question = get_random_question(questions, difficulty[0])
@@ -101,7 +106,7 @@ def game():
                 if answer == question['correct_answer']:
                     level = min(level + 1, len(money_levels) - 1)
                     print(f"Congratulations! You got it right! The correct answer is {question['correct_answer']}.\n")
-                    print(f"Numero de Hints: {hints}\nMoney Level: {money_levels[level]}")
+                    print(f"Numero de Hints: {hints}\nMoney Level: {money_levels[level]}\n")
                 else:
                     # Handle penalties based on hints
                     if hints >= 3:
@@ -121,16 +126,16 @@ def game():
                     print(f"That's incorrect!\nThe correct answer was {question['correct_answer']}. Better luck next time!\n")
                     print(f"Numero de Hints: {hints}\nMoney Level: {money_levels[level]}")
             else:
-                print("Moving on to the next question")
+                print("Moving on to the next question\n")
             
             n_question += 1
 
 def bonus_round(n_bonus_round):
-
     bonus_questions = load_bonus_questions()
+    #hints_gained, correct_answers = print_bonus_questions(bonus_questions, n_bonus_round)
 
     if n_bonus_round == 1:
-        print("*" * 25 , "\n****FIRST BONUS ROUND****", "\n" + "*" * 25)
+        print("*" * 25, "\n****FIRST BONUS ROUND****", "\n" + "*" * 25)
         print("!!!ATTENTION!!!\nWriting the answer with orthographic errors will count as a wrong answer!!!")
 
         ready()
@@ -139,18 +144,20 @@ def bonus_round(n_bonus_round):
         if hints_gained > 0:
             print(f"Congratulations you got {correct_answers} correct answers, so you won {hints_gained} more hints.")
         else:
-            print(f"Sorry, you got {correct_answers} correct answers, so you won {hints_gained} hints. Better Luck in the next bonus round. ")
+            print(f"Sorry, you got {correct_answers} correct answers, so you won {hints_gained} hints. Better luck in the next bonus round.")
     else:
-        print("*" * 26 , "\n****SECOND BONUS ROUND****", "\n" + "*" * 26)
+        print("*" * 26, "\n****SECOND BONUS ROUND****", "\n" + "*" * 26)
         print("!!!ATTENTION!!!\nWriting the answer with orthographic errors will count as a wrong answer!!!")
         
         ready()
         hints_gained, correct_answers = print_bonus_questions(bonus_questions, n_bonus_round)
 
         if hints_gained > 0:
-            print(f"Congratulations you got {correct_answers} correct answers, so you won {hints_gained} more hints.")
+            print(f"\nCongratulations you got {correct_answers} correct answers, so you won {hints_gained} more hints.")
         else:
-            print(f"Sorry, you got {correct_answers} correct answers, so you won {hints_gained} hints this round.\n Now lets get ready for the last questions of the game. ")
+            print(f"\nSorry, you got {correct_answers} correct answers, so you won {hints_gained} hints this round.\n Now let's get ready for the last questions of the game.")
 
+    # Return hints gained and correct answers to be used in the game function
+    return hints_gained
 
 main()

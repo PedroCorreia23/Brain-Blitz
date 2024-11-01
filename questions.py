@@ -1,6 +1,5 @@
 import random
 
-
 def load_bonus_questions():
     with open('bonus_questions.txt', 'r', encoding='utf-8') as file:
             
@@ -86,14 +85,13 @@ def question_num(n_question):
 bonus_questions = load_bonus_questions()
 def print_bonus_questions(bonus_questions, round_number):
     count = 0
-    hints_gained = 0 
+    hints_gained = 0  # Default to 0 hints gained
     correct_answers = 0
 
-    # Filter questions based on the specified round number
+    # Filter questions for the specified bonus round
     filtered_questions = [item for item in bonus_questions if item['round'] == f"[{round_number}]"]
 
     for item in filtered_questions:
-
         if count >= 10:  # Stop after 10 questions
             break
          
@@ -110,13 +108,16 @@ def print_bonus_questions(bonus_questions, round_number):
             print("Wrong Answer!")
         count += 1
 
-    if correct_answers == 5:
+    # Set hints_gained based on correct answers; adjust conditions if needed
+    if correct_answers >= 5 and correct_answers < 10:
         hints_gained = 1
-
     elif correct_answers == 10:
         hints_gained = 2
+
+    return hints_gained, correct_answers  # Ensure both values are returned
+
         
-    return hints_gained, correct_answers
+    
 
 
 

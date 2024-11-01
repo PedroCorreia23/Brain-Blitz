@@ -52,14 +52,11 @@ def game():
     while n_question < 12:
 
         if n_question == 1:
-            hints_gained, _ = bonus_round(1)
-            hints += hints_gained
+            bonus_round(1)
         elif n_question == 3:
-            hints_gained, _ = bonus_round(2)  
-            hints += hints_gained
-            
-        question_num(n_question)
+            bonus_round(2)
 
+        question_num(n_question)
         # Choose difficulty based on question number
         if level <= 2:
             question = get_random_question(questions, difficulty[0])
@@ -131,7 +128,6 @@ def game():
 def bonus_round(n_bonus_round):
 
     bonus_questions = load_bonus_questions()
-    hints_gained = print_bonus_questions(bonus_questions, round_number)
 
     if n_bonus_round == 1:
         print("*" * 25 , "\n****FIRST BONUS ROUND****", "\n" + "*" * 25)

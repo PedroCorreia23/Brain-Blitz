@@ -1,5 +1,3 @@
-import threading
-
 from gameRules import rules
 from questions import *
 from timer_module import *
@@ -33,6 +31,7 @@ def game():
     n_question = 0
     questions = load_questions()  
     difficulty = ["easy", "medium", "hard", "super hard"]
+    incorrect_choices = []
     print("Starting the game...\n")
 
     while n_question < 12:
@@ -64,10 +63,13 @@ def game():
             for idx, choice in enumerate(question['choices'], 1):
                 print(f"{idx}. {choice}")
 
-            # Event to signal the timer to stop
+            # Events for managing the timer and its pausing
             stop_event = threading.Event()
+            resume_event = threading.Event()
+            resume_event.set()  # Start with the timer running
+            
             # Start the timer in a separate thread
-            timer_thread = threading.Thread(target=timer, args=(stop_event, False))
+            timer_thread = threading.Thread(target=timer, args=(stop_event, resume_event, False))
             timer_thread.start()
             
             answer = None
@@ -78,8 +80,11 @@ def game():
                     if answer in ['A', 'B', 'C', 'D']:
                         stop_event.set()  # Stop the timer if a valid answer is provided
                         break
+                    elif answer == "H":
+                        print("Hint used!")
+                        hints, incorrect_choices = eliminate_incorrect_options(question, hints, incorrect_choices, resume_event)
                     elif not stop_event.is_set():
-                        print("Invalid input! Please enter A, B, C, or D.")
+                        print("Invalid input! Enter A, B, C, or D, or press H to use a Hint.")
                 except EOFError:
                     # Handle unexpected end-of-input
                     break
@@ -92,13 +97,10 @@ def game():
                 if answer == question['correct_answer']:
                     level = min(level + 1, len(money_levels) - 1)
                     print(f"Congratulations! You got it right! The correct answer is {question['correct_answer']}.\n")
-                    #print(f"Numero de Hints: {hints}\nMoney Level: {money_levels[level]}\n")
                 else:
                     # Handle penalties based on hints
                     hints, level = apply_penalty(hints, level)
-                    
                     print(f"That's incorrect!\nThe correct answer was {question['correct_answer']}. Better luck next time!\n")
-                    #print(f"Numero de Hints: {hints}\nMoney Level: {money_levels[level]}")
             else:
                 print("Moving on to the next question\n")
                 hints, level = apply_penalty(hints, level)
@@ -107,7 +109,6 @@ def game():
             n_question += 1
 
 def bonus_round(n_bonus_round):
-    bonus_questions = load_bonus_questions()
 
     if n_bonus_round == 1:
         print("*" * 25, "\n****FIRST BONUS ROUND****", "\n" + "*" * 25)
@@ -152,5 +153,42 @@ def apply_penalty(hints, level):
                     
     
     return hints, level
+
+def eliminate_incorrect_options(question, hints, incorrect_choices, resume_event):
+    if hints <= 0:
+        print("No hints available.")
+        return hints, incorrect_choices
+
+    # Pause timer by clearing resume_event
+    resume_event.clear()
+
+    # Request user input for two options they want to use the hint on
+    while True:
+        input_line = input("Enter the two options you're considering (e.g., A B): ").upper()
+        options = input_line.split()
+        
+        # Validate user input
+        if len(options) == 2 and all(opt in ['A', 'B', 'C', 'D'] for opt in options):
+            option1, option2 = options
+            break
+        else:
+            print("Invalid input! Please enter exactly two options (e.g., A B).")
+
+    hints -= 1  # Deduct a hint
+
+    # Check which option is incorrect and give feedback
+    if option1 != question['correct_answer']:
+        incorrect_choices.append(option1)
+        print(f"Hint used: Option {option1} is incorrect.")
+    elif option2 != question['correct_answer']:
+        incorrect_choices.append(option2)
+        print(f"Hint used: Option {option2} is incorrect.")
+    else:
+        print("Both options are correct. No incorrect option identified with this hint.")
+        
+    # Resume timer by setting resume_event
+    resume_event.set()
+
+    return hints, incorrect_choices
 
 main()

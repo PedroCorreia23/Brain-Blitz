@@ -1,5 +1,5 @@
 from gameRules import rules
-from questions import *
+from test_questions import *
 from timer_module import *
 
 def main():
@@ -183,8 +183,6 @@ def eliminate_incorrect_options(question, hints, incorrect_choices, resume_event
     elif option2 != question['correct_answer']:
         incorrect_choices.append(option2)
         print(f"Hint used: Option {option2} is incorrect.")
-    else:
-        print("Both options are correct. No incorrect option identified with this hint.")
         
     # Resume timer by setting resume_event
     resume_event.set()

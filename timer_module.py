@@ -1,9 +1,6 @@
 import time
 import sys
 
-import sys
-import time
-
 def timer(stop_event, resume_event, bonus_round):
 
     # Set timer duration based on bonus round status

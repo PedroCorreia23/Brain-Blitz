@@ -37,11 +37,11 @@ def game():
     while n_question < 12:
 
         if n_question == 1:
-            hints_gained= bonus_round(1)
+            hints_gained = bonus_round(1)
             hints += hints_gained
             print(f"You have now {hints} hints.\n")
         elif n_question == 3:
-            hints_gained= bonus_round(2)  
+            hints_gained = bonus_round(2)  
             hints += hints_gained
             print(f"You have now {hints} hints.\n")
 
@@ -75,6 +75,23 @@ def game():
             answer = None
             while not stop_event.is_set():
                 try:
+                    # Handle last question specific logic
+                    if n_question == 11:
+                        user_choice = input("This is the last question. Do you want to answer it? (y/n): ").lower()
+                        if user_choice == "n":
+                            if level == 1:  # €200 level forces an answer
+                                print("You're at the €200 level. You must answer this question.")
+                            else:
+                                level = max(level - 1, 0)
+                                print(f"You chose to skip. Your final prize level is {money_levels[level]}.")
+                                stop_event.set()
+                                break
+                        elif user_choice == "y":
+                            print("You've chosen to answer. Good luck!")
+                        else:
+                            print("Invalid input! Enter 'y' to answer or 'n' to skip.")
+                            continue
+
                     # Check if the user inputs a valid answer before time expires
                     answer = input().upper()
                     if answer in ['A', 'B', 'C', 'D']:
@@ -101,13 +118,13 @@ def game():
                     # Handle penalties based on hints
                     hints, level = apply_penalty(hints, level)
                     print(f"That's incorrect!\nThe correct answer was {question['correct_answer']}. Better luck next time!\n")
-            else:
+            elif n_question != 11:  # Only apply penalty if it's not the skipped last question
                 print("Moving on to the next question\n")
                 hints, level = apply_penalty(hints, level)
 
-            print(f"Numero de Hints: {hints}\nMoney Level: {money_levels[level]}\n")
+            print(f"Number of Hints: {hints}\nMoney Level: {money_levels[level]}\n")
             n_question += 1
-
+    
     # End of game messages based on final money level
     final_prize = money_levels[level]
     if final_prize == "50000€":
@@ -122,6 +139,7 @@ def game():
         print("\n😊 *Nicely Done!* 😊")
         print(f"You’ve proven yourself today, winning a prize of {final_prize}! You tackled some tough questions and came out with a respectable score.")
         print("With a bit more luck (or knowledge), you could reach even higher next time. Fantastic job, and enjoy your prize!")
+
 
 def bonus_round(n_bonus_round):
 

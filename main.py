@@ -108,6 +108,21 @@ def game():
             print(f"Numero de Hints: {hints}\nMoney Level: {money_levels[level]}\n")
             n_question += 1
 
+    # End of game messages based on final money level
+    final_prize = money_levels[level]
+    if final_prize == "50000€":
+        print("\n🎉 *Congratulations, Champion!* 🎉")
+        print("You've conquered every question and reached the top! With an impressive display of knowledge and courage, you've won the grand prize of **€50,000**!")
+        print("Enjoy your hard-earned reward, and remember: few can claim the title, but you’ve done it! Well done, true quiz master!")
+    elif final_prize in ["0€", "200€"]:
+        print("\n😔 *Better Luck Next Time!* 😔")
+        print(f"That was a valiant effort, but it just wasn’t your day. With a final prize of {final_prize}, we hope you had fun despite the challenges.")
+        print("Every quiz champion has to start somewhere—come back, try again, and see how far you can go next time. Good luck!")
+    else:
+        print("\n😊 *Nicely Done!* 😊")
+        print(f"You’ve proven yourself today, winning a prize of {final_prize}! You tackled some tough questions and came out with a respectable score.")
+        print("With a bit more luck (or knowledge), you could reach even higher next time. Fantastic job, and enjoy your prize!")
+
 def bonus_round(n_bonus_round):
 
     if n_bonus_round == 1:
